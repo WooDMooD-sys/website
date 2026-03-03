@@ -156,9 +156,11 @@
     .features {
       position: absolute;
       bottom: 44px;
-      left: 8vw;
+      left: 0;
+      right: 0;
       z-index: 2;
       display: flex;
+      justify-content: center;
       gap: clamp(24px, 5vw, 64px);
     }
 
@@ -187,7 +189,8 @@
     .feature-label {
       font-family: 'Georgia', serif;
       font-size: 10px;
-      color: rgba(255, 255, 255, 0.38);
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.65);
       letter-spacing: 0.2em;
       text-transform: uppercase;
       text-align: center;
@@ -346,9 +349,9 @@
 
       ctx.globalCompositeOperation = 'destination-out';
 
-      const fontSize   = Math.min(400, Math.max(100, Math.min(w * 0.24, h * 0.40)));
+      const fontSize   = Math.min(300, Math.max(80, Math.min(w * 0.19, h * 0.28)));
       const lineHeight = fontSize * 0.85;
-      const topY  = h * 0.5 - (lineHeight * 2 * 0.54);
+      const topY  = h * 0.42 - (lineHeight * 2 * 0.54);
       const centerX = w * 0.5;
 
       ctx.font         = `${fontSize}px Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif`;
