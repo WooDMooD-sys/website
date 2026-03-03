@@ -248,7 +248,7 @@
       <span></span>
       <span></span>
     </button>
-    <span class="brand">WoodMood</span>
+    <span class="brand">WooDMooD</span>
   </header>
 
   <!-- Side navigation drawer -->
@@ -358,8 +358,13 @@
       ctx.textAlign    = 'center';
       ctx.textBaseline = 'top';
       ctx.fillStyle    = 'black';
-      ctx.fillText('WOOD', centerX, topY);
-      ctx.fillText('MOOD', centerX, topY + lineHeight);
+
+      const xStretch = 1.45;
+      ctx.save();
+      ctx.scale(xStretch, 1);
+      ctx.fillText('WOOD', centerX / xStretch, topY);
+      ctx.fillText('MOOD', centerX / xStretch, topY + lineHeight);
+      ctx.restore();
 
       const url = canvas.toDataURL('image/png');
       overlay.style.webkitMaskImage  = `url(${url})`;
