@@ -197,6 +197,32 @@
       line-height: 1.6;
     }
 
+    /* ── Product image placeholder ── */
+    .product-image {
+      background: #080808;
+      border-top: 1px solid rgba(255, 160, 50, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 64px 8vw;
+    }
+
+    .product-image-placeholder {
+      width: 100%;
+      max-width: 860px;
+      aspect-ratio: 16 / 9;
+      border: 1px dashed rgba(255, 160, 50, 0.25);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.18);
+      font-family: 'Georgia', serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
     /* ── Feature sections ── */
     .feat-sections {
       background: #080808;
@@ -327,6 +353,11 @@
       </div>
     </div>
   </section>
+
+  <!-- Product image -->
+  <div class="product-image">
+    <div class="product-image-placeholder">Photo produit à venir</div>
+  </div>
 
   <!-- Feature sections -->
   <section class="feat-sections">
