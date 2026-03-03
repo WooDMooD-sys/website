@@ -235,6 +235,13 @@
       stroke: none;
     }
 
+    .feat-row-body {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex: 1;
+    }
+
     .feat-row-title {
       font-family: 'Georgia', serif;
       font-size: 10px;
@@ -243,7 +250,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       line-height: 1.6;
-      margin-bottom: 18px;
+      flex-shrink: 0;
     }
 
     .feat-row-text {
@@ -331,7 +338,7 @@
           <polyline points="24 12 24 24 31 29"/>
         </svg>
       </div>
-      <div>
+      <div class="feat-row-body">
         <h3 class="feat-row-title">Autonomie<br>10H</h3>
         <p class="feat-row-text">XXXXXXXXXXXXXX</p>
       </div>
@@ -346,7 +353,7 @@
           <circle class="dot" cx="24" cy="40" r="2.5"/>
         </svg>
       </div>
-      <div>
+      <div class="feat-row-body">
         <h3 class="feat-row-title">Connecté</h3>
         <p class="feat-row-text"></p>
       </div>
@@ -361,7 +368,7 @@
           <polyline points="14 32 10 24 18 24"/>
         </svg>
       </div>
-      <div>
+      <div class="feat-row-body">
         <h3 class="feat-row-title">Automatique</h3>
         <p class="feat-row-text"></p>
       </div>
@@ -376,7 +383,7 @@
           <path d="M30 17 C28 14 16 14 16 21 C16 28 30 27 30 34 C30 40 18 40 16 37"/>
         </svg>
       </div>
-      <div>
+      <div class="feat-row-body">
         <h3 class="feat-row-title">Chauffage à Cout Réduit</h3>
         <p class="feat-row-text"></p>
       </div>
