@@ -136,7 +136,7 @@
       overflow: hidden;
     }
 
-    .bg-gif {
+    .bg-video {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -150,25 +150,6 @@
       inset: 0;
       background: #000;
       z-index: 1;
-    }
-
-    /* ── Hero title (centered WOOD / MOOD) ── */
-    .hero-title {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      text-align: center;
-      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-      font-size: clamp(80px, 18vw, 320px);
-      line-height: 0.85;
-      color: transparent;
-      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.55);
-      text-stroke: 1.5px rgba(255, 255, 255, 0.55);
-      letter-spacing: 0.04em;
-      pointer-events: none;
-      user-select: none;
     }
 
     /* Icons pinned to bottom of hero, above overlay */
@@ -282,13 +263,8 @@
 
   <!-- Hero -->
   <section class="hero">
-    <img class="bg-gif" src="alk1qq.gif" alt="">
+    <video class="bg-video" src="fire%20cropped.mp4" autoplay loop muted playsinline></video>
     <div class="dark-overlay"></div>
-
-    <div class="hero-title">
-      <div>WOOD</div>
-      <div>MOOD</div>
-    </div>
 
     <div class="features">
       <div class="feature">
