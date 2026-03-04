@@ -162,7 +162,49 @@
       aspect-ratio: 16 / 9;
     }
 
-    /* Responsive: stack on small screens */
+    /* ── Spec sections (full-width, below the grid) ── */
+    .spec-sections {
+      margin-top: 72px;
+      border-top: 1px solid rgba(255,160,50,0.1);
+    }
+
+    .spec-row {
+      padding: 36px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .spec-row:last-child { border-bottom: none; }
+
+    .spec-title {
+      font-family: 'Georgia', serif;
+      font-size: 12px;
+      font-weight: bold;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding-top: 3px;
+    }
+
+    .spec-body {
+      font-family: 'Georgia', serif;
+      font-size: 15px;
+      color: rgba(255,255,255,0.2);
+      font-style: italic;
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 640px) {
+      .spec-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    /* ── Responsive: stack on small screens ── */
     @media (max-width: 640px) {
       .products-grid {
         grid-template-columns: 1fr;
@@ -231,6 +273,32 @@
         </div>
 
       </div>
+
+      <!-- Full-width spec sections (Poele à bois) -->
+      <div class="spec-sections">
+
+        <div class="spec-row">
+          <h3 class="spec-title">Encombrement et Installation</h3>
+          <p class="spec-body">À venir</p>
+        </div>
+
+        <div class="spec-row">
+          <h3 class="spec-title">Matériaux</h3>
+          <p class="spec-body">À venir</p>
+        </div>
+
+        <div class="spec-row">
+          <h3 class="spec-title">Systèmes de sécurité</h3>
+          <p class="spec-body">À venir</p>
+        </div>
+
+        <div class="spec-row">
+          <h3 class="spec-title">Prix</h3>
+          <p class="spec-body">À venir</p>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
