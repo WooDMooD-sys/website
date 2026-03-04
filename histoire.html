@@ -251,24 +251,27 @@
 
     const stage = document.getElementById('storyStage');
 
-    /* Build pile lines — centered via left:50% + translateX(-50% + drift) */
+    /* Align pile center with WOOD MOOD lettering (both at 50vw) */
+    const stageCenterPx = window.innerWidth * 0.5 - stage.getBoundingClientRect().left;
+
+    /* Build pile lines — centered at viewport center */
     LINES.forEach((text, i) => {
       const el = document.createElement('span');
       el.className = 'story-line';
       el.textContent = text;
       el.style.top    = (i * LINE_H + YD[i]) + 'px';
-      el.style.left   = '50%';
+      el.style.left   = stageCenterPx + 'px';
       el.style.transform = `translateX(calc(-50% + 110vw))`;
       stage.appendChild(el);
     });
 
-    /* Build finale line — also centered */
+    /* Build finale line — also centered at viewport center */
     const finaleEl = document.createElement('span');
     finaleEl.className = 'story-finale';
     finaleEl.textContent = FINALE;
     const finaleTop = LINES.length * LINE_H + 62;
     finaleEl.style.top       = finaleTop + 'px';
-    finaleEl.style.left      = '50%';
+    finaleEl.style.left      = stageCenterPx + 'px';
     finaleEl.style.transform = `translateX(calc(-50% + 110vw))`;
     stage.appendChild(finaleEl);
 
