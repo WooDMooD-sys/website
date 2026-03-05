@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Showrooms — WooDMooD</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-  <style>
+<style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html, body {
@@ -169,18 +168,26 @@
       filter: invert(90%) hue-rotate(180deg);
     }
 
-    /* Leaflet popup dark theme */
-    .leaflet-popup-content-wrapper {
-      background: #111;
-      border: 1px solid rgba(255,160,50,0.25);
-      border-radius: 3px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-      color: rgba(255,255,255,0.8);
-      font-family: 'Georgia', serif;
-      font-size: 13px;
+    /* ── Two-map grid ── */
+    .maps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
     }
-    .leaflet-popup-tip { background: #111; }
-    .leaflet-popup-close-button { color: rgba(255,160,50,0.7) !important; }
+
+    .map-city-label {
+      font-family: 'Georgia', serif;
+      font-size: 11px;
+      color: rgba(255,160,50,0.7);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .maps-grid { grid-template-columns: 1fr; }
+    }
 
     @media (max-width: 560px) {
       .location-row {
@@ -246,7 +253,24 @@
           </div>
         </div>
 
-        <div class="map-wrap" id="showroomMap"></div>
+        <div class="maps-grid">
+          <div>
+            <div class="map-city-label">Angers</div>
+            <div class="map-wrap">
+              <iframe class="location-map"
+                src="https://maps.google.com/maps?q=6+Rue+Montrieux,+49100+Angers,+France&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                title="Showroom Angers"></iframe>
+            </div>
+          </div>
+          <div>
+            <div class="map-city-label">Orléans</div>
+            <div class="map-wrap">
+              <iframe class="location-map"
+                src="https://maps.google.com/maps?q=Chateau+de+Cormes,+Rue+de+Cormes,+45590+Saint-Cyr-en-Val,+France&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                title="Showroom Orléans"></iframe>
+            </div>
+          </div>
+        </div>
 
       </div>
 
@@ -320,33 +344,5 @@
     navBackdrop.addEventListener('click', closeNav);
   </script>
 
-  <!-- Leaflet map -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    const SHOWROOMS = [
-      { latlng: [47.4659, -0.5580], city: 'Angers',   addr: '6 rue Montrieux, 49100 ANGERS' },
-      { latlng: [47.8590,  1.9437], city: 'Orléans',  addr: 'Château de Cormes, rue de Cormes<br>45590 ST CYR EN VAL' }
-    ];
-
-    const map = L.map('showroomMap', { scrollWheelZoom: false })
-                 .setView([47.66, 0.69], 8);
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-      subdomains: 'abcd', maxZoom: 19
-    }).addTo(map);
-
-    const pinIcon = L.divIcon({
-      className: '',
-      html: '<div style="width:13px;height:13px;background:rgba(255,160,50,0.95);border:2px solid rgba(255,200,80,0.5);border-radius:50%;box-shadow:0 0 10px rgba(255,160,50,0.7);"></div>',
-      iconSize: [13, 13], iconAnchor: [6, 6], popupAnchor: [0, -10]
-    });
-
-    SHOWROOMS.forEach(s => {
-      L.marker(s.latlng, { icon: pinIcon })
-       .addTo(map)
-       .bindPopup(`<strong style="color:rgba(255,160,50,0.9)">${s.city}</strong><br>${s.addr}`);
-    });
-  </script>
 </body>
 </html>
