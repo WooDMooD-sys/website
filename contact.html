@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produits — WooDMooD</title>
+  <title>Contact — WooDMooD</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -99,9 +99,7 @@
       padding: 72px 8vw 120px;
     }
 
-    .page-content-inner {
-      max-width: 980px;
-    }
+    .page-content-inner { max-width: 760px; }
 
     .page-title {
       font-family: 'Georgia', serif;
@@ -110,85 +108,24 @@
       color: rgba(255,255,255,0.82);
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 40px;
+      margin-bottom: 60px;
     }
 
-    .page-intro {
-      font-family: 'Georgia', serif;
-      font-size: 15px;
-      line-height: 1.9;
-      color: rgba(255,255,255,0.45);
-      max-width: 780px;
-      margin-bottom: 64px;
-    }
-
-    /* ── Two-column product grid ── */
-    .products-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-
-    .product-col {
-      padding: 0 40px 0 0;
-    }
-
-    .product-col + .product-col {
-      padding: 0 0 0 40px;
-      border-left: 1px solid rgba(255,160,50,0.12);
-    }
-
-    .col-title {
-      font-family: 'Georgia', serif;
-      font-size: 18px;
-      font-weight: bold;
-      color: rgba(255,255,255,0.7);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 32px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(255,160,50,0.18);
-    }
-
-    /* Placeholder area for future images */
-    .media-placeholder {
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      border: 1px dashed rgba(255,160,50,0.22);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.14);
-      font-family: 'Georgia', serif;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .media-placeholder + .media-placeholder {
-      aspect-ratio: 16 / 9;
-    }
-
-    /* ── Spec sections (full-width, below the grid) ── */
-    .spec-sections {
-      margin-top: 72px;
+    /* ── Contact rows ── */
+    .contact-list {
       border-top: 1px solid rgba(255,160,50,0.1);
     }
 
-    .spec-row {
-      padding: 36px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+    .contact-row {
       display: grid;
-      grid-template-columns: 260px 1fr;
+      grid-template-columns: 200px 1fr;
       gap: 40px;
       align-items: start;
+      padding: 36px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    .spec-row:last-child { border-bottom: none; }
-
-    .spec-title {
+    .contact-label {
       font-family: 'Georgia', serif;
       font-size: 12px;
       font-weight: bold;
@@ -198,42 +135,32 @@
       padding-top: 3px;
     }
 
-    .spec-body {
+    .contact-details {
       font-family: 'Georgia', serif;
       font-size: 15px;
-      color: rgba(255,255,255,0.38);
-      line-height: 1.85;
+      line-height: 2;
+      color: rgba(255,255,255,0.55);
       letter-spacing: 0.03em;
     }
 
-    .spec-sublabel {
-      color: rgba(255,255,255,0.62);
-      font-weight: bold;
-      font-style: normal;
-      letter-spacing: 0.08em;
+    .contact-details a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-details a:hover { color: rgba(255,160,50,0.9); }
+
+    .contact-type {
+      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
     }
 
-    @media (max-width: 640px) {
-      .spec-row {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-    }
-
-    /* ── Responsive: stack on small screens ── */
-    @media (max-width: 640px) {
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
-      .product-col {
-        padding: 0 0 48px 0;
-        border-left: none !important;
-      }
-      .product-col + .product-col {
-        padding: 48px 0 0 0;
-        border-left: none;
-        border-top: 1px solid rgba(255,160,50,0.12);
-      }
+    @media (max-width: 560px) {
+      .contact-row { grid-template-columns: 1fr; gap: 12px; }
     }
   </style>
 </head>
@@ -253,9 +180,9 @@
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="histoire.html">Histoire</a></li>
-      <li><a href="produits.html" class="active">Produits</a></li>
+      <li><a href="produits.html">Produits</a></li>
       <li><a href="showrooms.html">Showrooms</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
     </ul>
   </nav>
   <div class="nav-backdrop" id="navBackdrop"></div>
@@ -266,84 +193,23 @@
     <div class="dark-overlay"></div>
   </section>
 
-  <!-- Produits content -->
+  <!-- Contact content -->
   <section class="page-content">
     <div class="page-content-inner">
 
-      <h1 class="page-title">Produits</h1>
+      <h1 class="page-title">Contact</h1>
 
-      <p class="page-intro">
-        WooDMooD a développé le poêle à bûches autonome et connecté, qui rend l'expérience du vrai feu plus facile et permet de vous chauffer à moindre coûts.<br><br>
-        Avec son système automatisé de gestion de l'air et de livraison de bûches de 33 cm stockées dans deux cassettes (contenant au total 12 bûches), l'appareil a une autonomie approximative de 10 heures dans le cas où vous ne réapprovisionnez pas. Vous pilotez votre appareil grâce à une application.
-      </p>
+      <div class="contact-list">
 
-      <div class="products-grid">
-
-        <!-- LEFT: Poele à bois -->
-        <div class="product-col">
-          <h2 class="col-title">Poele à bois</h2>
-          <div class="media-placeholder">Photo produit à venir</div>
-          <div class="media-placeholder">Photo produit à venir</div>
-        </div>
-
-        <!-- RIGHT: Appli -->
-        <div class="product-col">
-          <h2 class="col-title">Appli</h2>
-          <div class="spec-body" style="margin-bottom: 28px; font-style: normal; line-height: 1.85;">
-            L'appli permet de réaliser de multiples taches comme par exemple :<br>
-            Ouvrir la porte des cassettes<br>
-            Informer du niveau de remplissage des cassettes<br>
-            Visualiser la température de consigne que vous souhaitez<br>
-            Informer en cas de défaut détecté
-          </div>
-          <div class="media-placeholder">Capture d'écran à venir</div>
-          <div class="media-placeholder">Capture d'écran à venir</div>
-        </div>
-
-      </div>
-
-      <!-- Full-width spec sections (Poele à bois) -->
-      <div class="spec-sections">
-
-        <div class="spec-row">
-          <h3 class="spec-title">Installation et encombrement</h3>
-          <div class="spec-body">
-            <span class="spec-sublabel">L'installation</span><br>
-            &nbsp;&nbsp;* doit être réalisée par un professionnel<br>
-            &nbsp;&nbsp;* accès à un WIFI<br>
-            &nbsp;&nbsp;* une prise de courant à proximité<br>
-            &nbsp;&nbsp;* un conduit de 150mm de diamètre<br>
+        <div class="contact-row">
+          <span class="contact-label">Contact</span>
+          <div class="contact-details">
+            <span class="contact-type">Par email</span>
+            <a href="mailto:connectwoodmood@gmail.com">connectwoodmood@gmail.com</a>
             <br>
-            <span class="spec-sublabel">Encombrement</span><br>
-            &nbsp;&nbsp;Schémas à venir
+            <span class="contact-type" style="margin-top: 14px;">Par téléphone</span>
+            <a href="tel:+33650771660">06 50 77 16 60</a>
           </div>
-        </div>
-
-        <div class="spec-row">
-          <h3 class="spec-title">Matériaux</h3>
-          <div class="spec-body">
-            Construction en acier : core du Poêle en acier 6mm<br>
-            Matériaux réfractaires : briques (pour le rayonnement et accumulation de chaleur) et vermiculite<br>
-            Peinture haute température<br>
-            Verre vitrocéramique
-          </div>
-        </div>
-
-        <div class="spec-row">
-          <h3 class="spec-title">Systèmes de sécurité</h3>
-          <div class="spec-body">
-            Système de protection haute température<br>
-            Arrêt de la ventilation et livraison de bois lors de l'ouverture de la porte principale<br>
-            Arrêt de la ventilation lors de l'ouverture de la trappe d'insertion d'une cassette<br>
-            Blocage et déblocage électronique de l'ouverture des portes des cassettes<br>
-            Système de gabaris dans les cassettes pour éviter les blocages de bûches<br>
-            Système de détection de blocage d'une trappe par une bûche
-          </div>
-        </div>
-
-        <div class="spec-row">
-          <h3 class="spec-title">Prix</h3>
-          <p class="spec-body">À venir</p>
         </div>
 
       </div>
