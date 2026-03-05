@@ -316,15 +316,13 @@
       { latlng: [47.8590,  1.9437], city: 'Orléans', addr: 'Château de Cormes, rue de Cormes<br>45590 ST CYR EN VAL' }
     ];
 
-    const bounds = L.latLngBounds(showrooms.map(s => s.latlng));
-
     showrooms.forEach(s => {
       L.marker(s.latlng, { icon: pinIcon })
        .addTo(map)
        .bindPopup(`<strong>${s.city}</strong><br>${s.addr}`);
     });
 
-    map.fitBounds(bounds, { padding: [60, 60] });
+    map.setView([48.5, 1.8], 6);
   </script>
 
 </body>
