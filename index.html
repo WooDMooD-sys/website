@@ -297,6 +297,20 @@
       line-height: 1.85;
       color: rgba(255, 255, 255, 0.38);
     }
+
+    #hero-tagline {
+      position: absolute;
+      z-index: 2;
+      display: none;
+      text-align: center;
+      font-family: 'Georgia', serif;
+      font-size: 16px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.65);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
@@ -331,6 +345,8 @@
   <section class="hero">
     <video class="bg-video" src="5659682-hd_1920_1080_24fps.mp4" autoplay loop muted playsinline></video>
     <div class="dark-overlay"></div>
+
+    <p id="hero-tagline">POELES A BUCHES AUTONOMES &amp; CONNECTES</p>
 
     <div class="features">
       <div class="feature">
@@ -481,6 +497,15 @@
       overlay.style.maskSize         = '100% 100%';
       overlay.style.webkitMaskRepeat = 'no-repeat';
       overlay.style.maskRepeat       = 'no-repeat';
+
+      // Position tagline below MOOD text, matching the stretched text width
+      const textWidth = Math.max(ctx.measureText('WOOD').width, ctx.measureText('MOOD').width) * xStretch;
+      const moodBottom   = topY + lineHeight * 2 + fontSize * 0.72; // approx bottom of MOOD glyphs
+      const tagline      = document.getElementById('hero-tagline');
+      tagline.style.width  = textWidth + 'px';
+      tagline.style.left   = (centerX - textWidth / 2) + 'px';
+      tagline.style.top    = (moodBottom + fontSize * 0.12) + 'px';
+      tagline.style.display = 'block';
     }
 
     document.fonts.ready.then(() => {
