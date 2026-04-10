@@ -56,7 +56,7 @@
     .nav-drawer {
       position: fixed; top: 0; left: -300px;
       width: 280px; height: 100vh;
-      background: #0c0c0c;
+      background: #000;
       border-right: 1px solid rgba(255,160,50,0.12);
       z-index: 200;
       transition: left 0.35s cubic-bezier(0.4,0,0.2,1);
@@ -102,12 +102,27 @@
     .dark-overlay {
       position: absolute; inset: 0; background: #000; z-index: 1;
     }
+    .hero-subtitle {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      font-family: 'Georgia', serif;
+      font-size: 11px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.65);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.6;
+      white-space: normal;
+    }
 
     /* ── Histoire content ── */
     .page-content {
-      background: #080808;
+      background: #000;
       border-top: 1px solid rgba(255,160,50,0.1);
-      padding: 36px 8vw 120px;
+      padding: 40px 8vw 120px;
     }
     .page-content-inner { max-width: 760px; }
 
@@ -185,6 +200,7 @@
   <section class="mini-hero">
     <video class="bg-video" src="5659682-hd_1920_1080_24fps.mp4" autoplay loop muted playsinline></video>
     <div class="dark-overlay"></div>
+    <div class="hero-subtitle" id="heroSubtitle"><span id="subtitleLine1">LE POELE A BUCHES</span><br><span id="subtitleLine2">AUTONOME ET CONNECTE</span></div>
   </section>
 
   <!-- Histoire content -->
@@ -237,6 +253,22 @@
       overlay.style.maskSize         = '100% 100%';
       overlay.style.webkitMaskRepeat = 'no-repeat';
       overlay.style.maskRepeat       = 'no-repeat';
+
+      // Position subtitle just below MOOD text, same width as WOODMOOD
+      const textWidth = ctx.measureText('WOOD').width * xStretch;
+      const moodBottom = topY + lineHeight + fontSize;
+      const subtitle = document.getElementById('heroSubtitle');
+      subtitle.style.width = textWidth + 'px';
+      subtitle.style.top   = (moodBottom + 18) + 'px';
+
+      // Stretch each subtitle line to match WOOD width via letter-spacing
+      ctx.font = 'bold 11px Georgia, serif';
+      const line1 = 'LE POELE A BUCHES';
+      const line2 = 'AUTONOME ET CONNECTE';
+      document.getElementById('subtitleLine1').style.letterSpacing =
+        ((textWidth - ctx.measureText(line1).width) / line1.length) + 'px';
+      document.getElementById('subtitleLine2').style.letterSpacing =
+        ((textWidth - ctx.measureText(line2).width) / line2.length) + 'px';
     }
     document.fonts.ready.then(() => {
       applyTextMask();
@@ -268,33 +300,46 @@
     const SETTLE_MS = 300; /* settle-rotation duration after landing   */
 
     const stage = document.getElementById('storyStage');
+    let finaleEl;
 
-    /* Align pile center with WOOD MOOD lettering (both at 50vw) */
-    const stageCenterPx = window.innerWidth * 0.5 - stage.getBoundingClientRect().left;
+    /* Build story after full page load so getBoundingClientRect is accurate */
+    window.addEventListener('load', () => {
+      /* Align pile center with WOOD MOOD lettering (both at 50vw) */
+      const stageCenterPx = window.innerWidth * 0.5 - stage.getBoundingClientRect().left;
 
-    /* Build pile lines — centered at viewport center */
-    LINES.forEach((text, i) => {
-      const el = document.createElement('span');
-      el.className = 'story-line';
-      el.textContent = text;
-      el.style.top    = (i * LINE_H + YD[i]) + 'px';
-      el.style.left   = stageCenterPx + 'px';
-      el.style.transform = `translateX(calc(-50% + 110vw))`;
-      stage.appendChild(el);
+      /* Build pile lines — centered at viewport center */
+      LINES.forEach((text, i) => {
+        const el = document.createElement('span');
+        el.className = 'story-line';
+        el.textContent = text;
+        el.style.top    = (i * LINE_H + YD[i]) + 'px';
+        el.style.left   = stageCenterPx + 'px';
+        el.style.transform = `translateX(calc(-50% + 110vw))`;
+        stage.appendChild(el);
+      });
+
+      /* Build finale line — also centered at viewport center */
+      finaleEl = document.createElement('span');
+      finaleEl.className = 'story-finale';
+      finaleEl.textContent = FINALE;
+      const finaleTop = LINES.length * LINE_H + 62;
+      finaleEl.style.top       = finaleTop + 'px';
+      finaleEl.style.left      = stageCenterPx + 'px';
+      finaleEl.style.transform = `translateX(calc(-50% + 110vw))`;
+      stage.appendChild(finaleEl);
+
+      /* Give stage explicit height so the page expands correctly */
+      stage.style.minHeight = (finaleTop + 40) + 'px';
+
+      /* Trigger animation when stage scrolls into view */
+      const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          setTimeout(startAnimation, 250);
+        }
+      }, { threshold: 0.05 });
+      observer.observe(stage);
     });
-
-    /* Build finale line — also centered at viewport center */
-    const finaleEl = document.createElement('span');
-    finaleEl.className = 'story-finale';
-    finaleEl.textContent = FINALE;
-    const finaleTop = LINES.length * LINE_H + 62;
-    finaleEl.style.top       = finaleTop + 'px';
-    finaleEl.style.left      = stageCenterPx + 'px';
-    finaleEl.style.transform = `translateX(calc(-50% + 110vw))`;
-    stage.appendChild(finaleEl);
-
-    /* Give stage explicit height so the page expands correctly */
-    stage.style.minHeight = (finaleTop + 40) + 'px';
 
     /* ── Animate ── */
     function startAnimation() {
@@ -323,15 +368,6 @@
         finaleEl.style.transform  = 'translateX(-50%)';
       }, finaleDelay);
     }
-
-    /* Trigger when stage scrolls into view */
-    const observer = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        observer.disconnect();
-        setTimeout(startAnimation, 250);
-      }
-    }, { threshold: 0.05 });
-    observer.observe(stage);
 
     /* ── Hamburger / drawer ── */
     const hamburger   = document.getElementById('hamburger');

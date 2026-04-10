@@ -1,0 +1,43 @@
+<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="t" d="M 26,120 A 94,94 0 0,0 214,120"/>
+    <path id="b" d="M 214,120 A 94,94 0 0,0 26,120"/>
+    <clipPath id="cc">
+      <circle cx="120" cy="120" r="116"/>
+    </clipPath>
+  </defs>
+
+  <!-- Dark fill -->
+  <circle cx="120" cy="120" r="120" fill="#1a1008"/>
+
+  <!-- Outer thick ring -->
+  <circle cx="120" cy="120" r="116" fill="none" stroke="white" stroke-width="8"/>
+  <!-- Second ring -->
+  <circle cx="120" cy="120" r="106" fill="none" stroke="white" stroke-width="2"/>
+  <!-- Inner rings -->
+  <circle cx="120" cy="120" r="76"  fill="none" stroke="white" stroke-width="2"/>
+  <circle cx="120" cy="120" r="68"  fill="none" stroke="white" stroke-width="5"/>
+
+  <!-- Wide diagonal banner -->
+  <g clip-path="url(#cc)">
+    <rect x="-10" y="91" width="260" height="58" rx="11" fill="white" transform="rotate(-9,120,120)"/>
+  </g>
+
+  <!-- WooDMooD — large black bold -->
+  <text text-anchor="middle" x="120" y="128"
+        font-family="'Arial Black','Franklin Gothic Heavy',Impact,Arial,sans-serif"
+        font-size="40" font-weight="900" fill="#1a1008"
+        transform="rotate(-9,120,120)">WooDMooD</text>
+
+  <!-- Top arc: LE POÊLE À BÛCHES -->
+  <text font-family="'Arial Narrow',Arial,sans-serif"
+        font-size="13.5" font-weight="bold" fill="white" letter-spacing="3.5">
+    <textPath href="#t" startOffset="50%" text-anchor="middle">LE POÊLE À BÛCHES</textPath>
+  </text>
+
+  <!-- Bottom arc: AUTONOME ET CONNECTÉ -->
+  <text font-family="'Arial Narrow',Arial,sans-serif"
+        font-size="13.5" font-weight="bold" fill="white" letter-spacing="2.5">
+    <textPath href="#b" startOffset="50%" text-anchor="middle">AUTONOME ET CONNECTÉ</textPath>
+  </text>
+</svg>
