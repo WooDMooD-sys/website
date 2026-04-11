@@ -18,112 +18,64 @@
     .site-header {
       position: fixed;
       top: 0; left: 0; right: 0;
+      height: 15vh;
       z-index: 100;
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      gap: 14px;
-      padding: 20px 8vw;
-    }
-
-    .hamburger {
-      background: none; border: none; cursor: pointer;
-      display: flex; flex-direction: column; gap: 5px; padding: 4px;
-      pointer-events: all;
-    }
-    .hamburger span {
-      display: block; width: 22px; height: 2px;
-      background: rgba(255,255,255,0.7); transition: background 0.2s;
-    }
-    .hamburger:hover span { background: rgba(255,160,50,0.9); }
-
-    .brand {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 18px; font-weight: normal;
-      color: rgba(255,255,255,0.7); letter-spacing: 0.04em;
+      padding: 0 6vw;
+      background: rgba(0, 0, 0, 0.88);
+      border-bottom: 1px solid rgba(255, 160, 50, 0.12);
     }
 
     .brand-wrap {
-      position: absolute; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column;
-      align-items: center; gap: 3px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
     }
 
     .brand-logo {
-      height: auto; display: block;
-      filter: invert(1) opacity(0.7);
+      height: clamp(28px, 4.5vh, 52px);
+      width: auto;
+      display: block;
+      filter: invert(1) opacity(0.68);
     }
 
-    /* ── Side nav drawer ── */
-    .nav-drawer {
-      position: fixed; top: 0; left: -300px;
-      width: 280px; height: 100vh;
-      background: #000;
-      border-right: 1px solid rgba(255,160,50,0.12);
-      z-index: 200;
-      transition: left 0.35s cubic-bezier(0.4,0,0.2,1);
-      display: flex; flex-direction: column; padding: 32px 0;
+    .header-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(22px, 3.8vw, 60px);
     }
-    .nav-drawer.open { left: 0; }
 
-    .nav-close {
-      background: none; border: none;
-      color: rgba(255,255,255,0.5); font-size: 18px; cursor: pointer;
-      align-self: flex-end; margin-right: 28px; margin-bottom: 32px;
-      line-height: 1; transition: color 0.2s;
+    .wm-macaron {
+      height: clamp(50px, 11vh, 110px);
+      width: auto;
+      display: block;
     }
-    .nav-close:hover { color: rgba(255,160,50,0.9); }
 
-    .nav-drawer ul { list-style: none; display: flex; flex-direction: column; }
-    .nav-drawer ul li a {
-      display: block; padding: 16px 32px;
-      font-family: 'Georgia', serif; font-size: 15px;
-      color: rgba(255,255,255,0.6); text-decoration: none;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      transition: color 0.2s, padding-left 0.2s;
-    }
-    .nav-drawer ul li a:hover { color: rgba(255,160,50,0.9); padding-left: 40px; }
-    .nav-drawer ul li a.active { color: rgba(255,160,50,0.9); }
-
-    .nav-backdrop {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.55); z-index: 150;
-      opacity: 0; pointer-events: none; transition: opacity 0.35s ease;
-    }
-    .nav-backdrop.open { opacity: 1; pointer-events: all; }
-
-    /* ── Mini hero ── */
-    .mini-hero {
-      position: relative; width: 100%;
-      height: 45vh; min-height: 220px; overflow: hidden;
-    }
-    .bg-video {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%; object-fit: cover; z-index: 0;
-    }
-    .dark-overlay {
-      position: absolute; inset: 0; background: #000; z-index: 1;
-    }
-    .hero-subtitle {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      font-family: 'Georgia', serif;
-      font-size: 11px;
-      font-weight: bold;
-      color: rgba(255, 255, 255, 0.65);
-      letter-spacing: 0.2em;
+    .header-nav a {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: clamp(13px, 1.35vw, 19px);
+      font-weight: normal;
+      color: rgba(255, 255, 255, 0.68);
+      text-decoration: none;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      text-align: center;
-      line-height: 1.6;
-      white-space: normal;
+      transition: color 0.2s;
     }
+
+    .header-nav a:hover { color: rgba(255, 160, 50, 0.9); }
+    .header-nav a.active { color: rgba(255, 160, 50, 0.9); }
 
     /* ── Page content ── */
     .page-content {
       background: #000;
       border-top: 1px solid rgba(255,160,50,0.1);
       padding: 40px 8vw 120px;
+      padding-top: 15vh;
     }
 
     .page-content-inner { max-width: 760px; }
@@ -237,34 +189,18 @@
 
   <!-- Fixed header -->
   <header class="site-header">
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="brand-wrap">
+    <a href="index.html" class="brand-wrap">
       <img src="logo.png" class="brand-logo" alt="WooDMooD logo">
-      <span class="brand">WooDMooD</span>
-    </div>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html">Home</a>
+      <a href="histoire.html">Histoire</a>
+      <a href="produits.html">Produits</a>
+      <a href="showrooms.html" class="active">Showrooms</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <img src="Gemini_Generated_Image_9tt4nn9tt4nn9tt4__2_-removebg-preview.png" class="wm-macaron" alt="WooDMooD">
   </header>
-
-  <!-- Side navigation drawer -->
-  <nav class="nav-drawer" id="navDrawer" aria-hidden="true">
-    <button class="nav-close" id="navClose" aria-label="Close menu">✕</button>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="histoire.html">Histoire</a></li>
-      <li><a href="produits.html">Produits</a></li>
-      <li><a href="showrooms.html" class="active">Showrooms</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  <div class="nav-backdrop" id="navBackdrop"></div>
-
-  <!-- Mini hero with fire + WOOD MOOD -->
-  <section class="mini-hero">
-    <video class="bg-video" src="5659682-hd_1920_1080_24fps.mp4" autoplay loop muted playsinline></video>
-    <div class="dark-overlay"></div>
-    <div class="hero-subtitle" id="heroSubtitle"><span id="subtitleLine1">LE POELE A BUCHES</span><br><span id="subtitleLine2">AUTONOME ET CONNECTE</span></div>
-  </section>
 
   <!-- Showrooms content -->
   <section class="page-content">
@@ -301,90 +237,6 @@
   </section>
 
   <script>
-    /* ── Canvas text mask (mini-hero) ── */
-    function applyTextMask() {
-      const overlay = document.querySelector('.dark-overlay');
-      const dpr = window.devicePixelRatio || 1;
-      const w   = window.innerWidth;
-      const h   = document.querySelector('.mini-hero').offsetHeight;
-
-      const canvas  = document.createElement('canvas');
-      canvas.width  = w * dpr;
-      canvas.height = h * dpr;
-      const ctx = canvas.getContext('2d');
-      ctx.scale(dpr, dpr);
-
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'destination-out';
-
-      const fontSize   = Math.min(160, Math.max(50, Math.min(w * 0.12, h * 0.28)));
-      const lineHeight = fontSize * 0.85;
-      const topY       = h * 0.5 - (lineHeight * 2 * 0.54);
-      const centerX    = w * 0.5;
-
-      ctx.font         = `${fontSize}px Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif`;
-      ctx.textAlign    = 'center';
-      ctx.textBaseline = 'top';
-      ctx.fillStyle    = 'black';
-
-      const xStretch = 1.45;
-      ctx.save();
-      ctx.scale(xStretch, 1);
-      ctx.fillText('WOOD', centerX / xStretch, topY);
-      ctx.fillText('MOOD', centerX / xStretch, topY + lineHeight);
-      ctx.restore();
-
-      const url = canvas.toDataURL('image/png');
-      overlay.style.webkitMaskImage  = `url(${url})`;
-      overlay.style.maskImage        = `url(${url})`;
-      overlay.style.webkitMaskSize   = '100% 100%';
-      overlay.style.maskSize         = '100% 100%';
-      overlay.style.webkitMaskRepeat = 'no-repeat';
-      overlay.style.maskRepeat       = 'no-repeat';
-
-      // Position subtitle just below MOOD text, same width as WOODMOOD
-      const textWidth = ctx.measureText('WOOD').width * xStretch;
-      const moodBottom = topY + lineHeight + fontSize;
-      const subtitle = document.getElementById('heroSubtitle');
-      subtitle.style.width = textWidth + 'px';
-      subtitle.style.top   = (moodBottom + 18) + 'px';
-
-      // Stretch each subtitle line to match WOOD width via letter-spacing
-      ctx.font = 'bold 11px Georgia, serif';
-      const line1 = 'LE POELE A BUCHES';
-      const line2 = 'AUTONOME ET CONNECTE';
-      document.getElementById('subtitleLine1').style.letterSpacing =
-        ((textWidth - ctx.measureText(line1).width) / line1.length) + 'px';
-      document.getElementById('subtitleLine2').style.letterSpacing =
-        ((textWidth - ctx.measureText(line2).width) / line2.length) + 'px';
-    }
-    document.fonts.ready.then(() => {
-      applyTextMask();
-      document.querySelector('.brand-logo').style.width =
-        document.querySelector('.brand').offsetWidth + 'px';
-    });
-    window.addEventListener('resize', applyTextMask);
-
-    /* ── Hamburger / drawer ── */
-    const hamburger   = document.getElementById('hamburger');
-    const navClose    = document.getElementById('navClose');
-    const navDrawer   = document.getElementById('navDrawer');
-    const navBackdrop = document.getElementById('navBackdrop');
-
-    function openNav() {
-      navDrawer.classList.add('open');
-      navBackdrop.classList.add('open');
-      navDrawer.setAttribute('aria-hidden', 'false');
-    }
-    function closeNav() {
-      navDrawer.classList.remove('open');
-      navBackdrop.classList.remove('open');
-      navDrawer.setAttribute('aria-hidden', 'true');
-    }
-    hamburger.addEventListener('click', openNav);
-    navClose.addEventListener('click', closeNav);
-    navBackdrop.addEventListener('click', closeNav);
   </script>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
