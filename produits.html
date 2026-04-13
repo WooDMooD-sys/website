@@ -36,10 +36,18 @@
     }
 
     .brand-logo {
-      height: clamp(28px, 4.5vh, 52px);
+      height: clamp(32px, 5vh, 58px);
       width: auto;
       display: block;
       filter: invert(1) opacity(0.68);
+    }
+
+    .brand-name {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: normal;
+      color: rgba(255, 255, 255, 0.68);
+      white-space: nowrap;
+      letter-spacing: 0.08em;
     }
 
     .header-nav {
@@ -53,6 +61,7 @@
       height: clamp(50px, 11vh, 110px);
       width: auto;
       display: block;
+      margin-right: -2vw;
     }
 
     .header-nav a {
@@ -288,11 +297,11 @@
 
   <!-- Fixed header -->
   <header class="site-header">
-    <a href="index.html" class="brand-wrap">
-      <img src="logo.png" class="brand-logo" alt="WooDMooD logo">
+    <a href="index.html" class="brand-wrap" id="brandWrap">
+      <img src="logo.png" class="brand-logo" id="brandLogo" alt="WooDMooD logo">
+      <span class="brand-name" id="brandName">WooDMooD</span>
     </a>
     <nav class="header-nav">
-      <a href="index.html">Home</a>
       <a href="histoire.html">Histoire</a>
       <a href="produits.html" class="active">Produits</a>
       <a href="showrooms.html">Showrooms</a>
@@ -436,6 +445,24 @@
     </div>
   </section>
 
+  <script>
+    function fitBrandName() {
+      const logo = document.getElementById('brandLogo');
+      const name = document.getElementById('brandName');
+      const logoW = logo.offsetWidth;
+      if (!logoW) return;
+      let lo = 6, hi = 80, mid;
+      name.style.letterSpacing = '0.06em';
+      for (let i = 0; i < 20; i++) {
+        mid = (lo + hi) / 2;
+        name.style.fontSize = mid + 'px';
+        if (name.offsetWidth < logoW) lo = mid; else hi = mid;
+      }
+    }
+    if (document.readyState === 'complete') fitBrandName();
+    else window.addEventListener('load', fitBrandName);
+    window.addEventListener('resize', fitBrandName);
+  </script>
   <script>
     function initSlideshow(id) {
       const slides = document.querySelectorAll('#' + id + ' .alt-slide');
