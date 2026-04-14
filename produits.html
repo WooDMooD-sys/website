@@ -95,6 +95,31 @@
       padding-top: 36px;
     }
 
+    /* ── Top slideshow ── */
+    .prod-slideshow {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .prod-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.9s ease;
+    }
+
+    .prod-slide.active { opacity: 1; }
+
+    .prod-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     /* ── Alternating product sections ── */
     .alt-section {
       display: flex;
@@ -322,18 +347,20 @@
       <p class="prod-text">WooDMooD a développé le poêle à bûches autonome et connecté, qui rend l'expérience du vrai feu plus facile et permet de vous chauffer à moindre coûts. Avec son système automatisé de gestion de l'air et de livraison de bûches, l'appareil a une autonomie approximative de 8 heures. Vous pilotez votre appareil grâce à une application.</p>
     </div>
     <div class="alt-image" id="slideDesc">
-      <div class="alt-slide active"><img src="https://picsum.photos/seed/prod1/1200/800" alt="WooDMooD produit"></div>
-      <div class="alt-slide"><img src="https://picsum.photos/seed/prod2/1200/800" alt="WooDMooD produit"></div>
-      <div class="alt-slide"><img src="https://picsum.photos/seed/prod3/1200/800" alt="WooDMooD produit"></div>
+      <div class="alt-slide active"><img src="img/produits/desc1.jpeg" alt="WooDMooD produit"></div>
+      <div class="alt-slide"><img src="img/produits/desc2.jpg" alt="WooDMooD produit"></div>
     </div>
   </section>
 
   <!-- ══ Section 2 — Le Poêle à Bûches : images left 2/3, white right 1/3 ══ -->
   <section class="alt-section">
     <div class="alt-image" id="slidePole">
-      <div class="alt-slide active"><img src="https://picsum.photos/seed/pole1/1200/800" alt="Poêle à bûches"></div>
-      <div class="alt-slide"><img src="https://picsum.photos/seed/pole2/1200/800" alt="Poêle à bûches"></div>
-      <div class="alt-slide"><img src="https://picsum.photos/seed/pole3/1200/800" alt="Poêle à bûches"></div>
+      <div class="alt-slide active"><img src="img/produits/pole1.jpg" alt="Poêle à bûches"></div>
+      <div class="alt-slide"><img src="img/produits/pole2.jpg" alt="Poêle à bûches"></div>
+      <div class="alt-slide"><img src="img/produits/pole3.jpg" alt="Poêle à bûches"></div>
+      <div class="alt-slide"><img src="img/produits/pole4.jpg" alt="Poêle à bûches"></div>
+      <div class="alt-slide"><img src="img/produits/pole5.jpg" alt="Poêle à bûches"></div>
+      <div class="alt-slide"><img src="img/produits/pole6.jpg" alt="Poêle à bûches"></div>
     </div>
     <div class="alt-content">
       <h2 class="prod-section-title">Le Poêle<br>à Bûches</h2>
@@ -490,6 +517,17 @@
     initSlideshow('slideDesc');
     initSlideshow('slidePole');
     initSlideshow('slideAppli');
+
+    /* ── Top slideshow ── */
+    (function() {
+      const slides = document.querySelectorAll('#prodSlideshow .prod-slide');
+      let cur = 0;
+      setInterval(() => {
+        slides[cur].classList.remove('active');
+        cur = (cur + 1) % slides.length;
+        slides[cur].classList.add('active');
+      }, 2000);
+    })();
   </script>
 </body>
 </html>
