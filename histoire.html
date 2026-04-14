@@ -82,7 +82,7 @@
     /* ── Histoire content ── */
     .page-content {
       background: #fff;
-      padding: 0 8vw 18px;
+      padding: 0 8vw 6px;
       padding-top: 15vh;
     }
     .page-content-inner { max-width: 760px; }
@@ -94,8 +94,8 @@
       color: rgba(0,0,0,0.85);
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-top: 28px;
-      margin-bottom: 6px;
+      margin-top: 14px;
+      margin-bottom: 4px;
     }
 
     /* Intro sentence above the pile — centred across full page width */
@@ -115,7 +115,7 @@
     /* ── Story animation stage ── */
     .story-stage {
       position: relative;
-      min-height: 520px;
+      min-height: 320px;
     }
 
     .story-line {
@@ -151,20 +151,19 @@
       display: grid;
       grid-template-columns: 3fr 1fr;
       border-top: 1px solid rgba(255,160,50,0.15);
-      min-height: 120px;
     }
 
     .partners-left {
       display: flex;
       align-items: center;
-      gap: 5vw;
-      padding: 28px 6vw;
+      gap: 3vw;
+      padding: 14px 4vw;
       border-right: 1px solid rgba(255,160,50,0.12);
     }
 
     .partners-title {
       font-family: 'Georgia', serif;
-      font-size: 24px;
+      font-size: 18px;
       font-weight: bold;
       color: rgba(255,255,255,0.82);
       letter-spacing: 0.18em;
@@ -176,7 +175,7 @@
     .partners-logos {
       position: relative;
       flex: 1;
-      height: 70px;
+      height: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -186,8 +185,9 @@
       position: absolute;
       opacity: 0;
       transition: opacity 0.7s ease;
-      height: 55px;
+      height: 80px;
       width: auto;
+      max-width: 280px;
       filter: brightness(1.8) opacity(0.85);
     }
 
@@ -197,11 +197,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 8px;
     }
 
     .partners-badge {
-      height: clamp(90px, 13vh, 150px);
+      height: clamp(100px, 16vh, 150px);
       width: auto;
       filter: invert(1);
     }
@@ -240,35 +240,12 @@
     <div class="partners-left">
       <p class="partners-title">Nos Partenaires</p>
       <div class="partners-logos" id="partnersLogos">
-      <svg class="partner-logo visible" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
-        <rect x="2" y="2" width="56" height="56" rx="8" fill="none" stroke="rgba(255,160,50,0.9)" stroke-width="2.5"/>
-        <line x1="14" y1="30" x2="44" y2="30" stroke="rgba(255,160,50,0.9)" stroke-width="2.5"/>
-        <line x1="29" y1="15" x2="29" y2="45" stroke="rgba(255,160,50,0.9)" stroke-width="2.5"/>
-        <text x="70" y="26" font-size="15" font-weight="bold" fill="rgba(255,255,255,0.85)" font-family="Georgia,serif" letter-spacing="2">ATELIER</text>
-        <text x="70" y="46" font-size="12" fill="rgba(255,255,255,0.5)" font-family="Georgia,serif" letter-spacing="1">fabrication</text>
-      </svg>
-      <svg class="partner-logo" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(255,160,50,0.9)" stroke-width="2.5"/>
-        <circle cx="30" cy="30" r="10" fill="rgba(255,160,50,0.9)"/>
-        <text x="66" y="26" font-size="15" font-weight="bold" fill="rgba(255,255,255,0.85)" font-family="Georgia,serif" letter-spacing="2">INNOVA</text>
-        <text x="66" y="46" font-size="12" fill="rgba(255,255,255,0.5)" font-family="Georgia,serif" letter-spacing="1">technologie</text>
-      </svg>
-      <svg class="partner-logo" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="30,6 54,30 30,54 6,30" fill="none" stroke="rgba(255,160,50,0.9)" stroke-width="2.5"/>
-        <text x="66" y="26" font-size="15" font-weight="bold" fill="rgba(255,255,255,0.85)" font-family="Georgia,serif" letter-spacing="2">FOYER</text>
-        <text x="66" y="46" font-size="12" fill="rgba(255,255,255,0.5)" font-family="Georgia,serif" letter-spacing="1">distribution</text>
-      </svg>
-      <svg class="partner-logo" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="18" width="48" height="24" rx="12" fill="none" stroke="rgba(255,160,50,0.9)" stroke-width="2.5"/>
-        <rect x="14" y="24" width="12" height="12" rx="6" fill="rgba(255,160,50,0.9)"/>
-        <text x="66" y="26" font-size="15" font-weight="bold" fill="rgba(255,255,255,0.85)" font-family="Georgia,serif" letter-spacing="2">NEXIO</text>
-        <text x="66" y="46" font-size="12" fill="rgba(255,255,255,0.5)" font-family="Georgia,serif" letter-spacing="1">connectivité</text>
-      </svg>
-      <svg class="partner-logo" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30 8 L52 22 L52 38 L30 52 L8 38 L8 22 Z" fill="none" stroke="rgba(255,160,50,0.9)" stroke-width="2.5"/>
-        <text x="66" y="26" font-size="15" font-weight="bold" fill="rgba(255,255,255,0.85)" font-family="Georgia,serif" letter-spacing="2">CALOR</text>
-        <text x="66" y="46" font-size="12" fill="rgba(255,255,255,0.5)" font-family="Georgia,serif" letter-spacing="1">énergie</text>
-      </svg>
+        <img src="img/partners/logo-3g.jpg"         class="partner-logo visible" alt="3G">
+        <img src="img/partners/logo-inpi.jpg"        class="partner-logo"         alt="INPI">
+        <img src="img/partners/logo-anjou.png"       class="partner-logo"         alt="Init Anjou"         style="height:120px;">
+        <img src="img/partners/logo-technopole.png"  class="partner-logo"         alt="Angers Technopole"  style="height:120px;">
+        <img src="img/partners/logo-bpi.jpg"         class="partner-logo"         alt="BPI">
+        <img src="img/partners/logo-som.jpg"         class="partner-logo"         alt="SOM">
       </div><!-- partners-logos -->
     </div><!-- partners-left -->
     <div class="partners-right">
