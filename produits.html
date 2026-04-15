@@ -316,6 +316,88 @@
 
     .nav-box--black { background: #000; color: #fff; }
     .nav-box--white { background: #fff; color: #000; }
+
+    /* ── Expandable panels ── */
+    .nav-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      background: #fff;
+      padding: 0 8vw;
+    }
+
+    .nav-panel.active {
+      max-height: 3000px;
+      padding: 40px 8vw;
+    }
+
+    .nav-panel-title {
+      font-family: 'Georgia', serif;
+      font-size: clamp(13px, 1.3vw, 17px);
+      font-weight: bold;
+      color: rgba(255, 160, 50, 0.88);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      margin-top: 24px;
+    }
+
+    .nav-panel-title:first-child { margin-top: 0; }
+
+    .nav-panel-intro {
+      font-family: 'Georgia', serif;
+      font-size: clamp(13px, 1.15vw, 16px);
+      font-style: italic;
+      color: rgba(0, 0, 0, 0.5);
+      margin-bottom: 16px;
+    }
+
+    .nav-panel-body {
+      font-family: 'Georgia', serif;
+      font-size: clamp(12px, 1.1vw, 15px);
+      line-height: 1.85;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .nav-panel-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .nav-panel-list li {
+      font-family: 'Georgia', serif;
+      font-size: clamp(13px, 1.15vw, 16px);
+      line-height: 1.6;
+      color: rgba(0, 0, 0, 0.72);
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .nav-panel-list li::before {
+      content: '*';
+      position: absolute;
+      left: 0;
+      color: rgba(0, 0, 0, 0.45);
+      font-weight: normal;
+    }
+
+    .nav-panel-images {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .nav-panel-images img {
+      flex: 1;
+      width: 50%;
+      height: 340px;
+      object-fit: contain;
+      background: #f5f5f5;
+    }
   </style>
 </head>
 <body>
@@ -344,11 +426,12 @@
   <section class="alt-section">
     <div class="alt-content">
       <h2 class="prod-section-title">Description<br>du produit</h2>
-      <p class="prod-text">WooDMooD a développé le poêle à bûches autonome et connecté, qui rend l'expérience du vrai feu plus facile et permet de vous chauffer à moindre coûts. Avec son système automatisé de gestion de l'air et de livraison de bûches, l'appareil a une autonomie approximative de 8 heures. Vous pilotez votre appareil grâce à une application.</p>
+      <p class="prod-text">WooDMooD a développé le poêle à bûches autonome et connecté, qui rend l'expérience du vrai feu plus facile et permet de vous chauffer de façon économique et à un prix relativement stable et sans surprises dans le temps. Vous démarrez votre feu manuellement et avec son système automatisé de gestion de l'air et de livraison de bûches, l'appareil présente une autonomie approximative de 8 heures. Vous pilotez votre appareil grâce à une application.</p>
     </div>
     <div class="alt-image" id="slideDesc">
       <div class="alt-slide active"><img src="img/produits/desc1.jpeg" alt="WooDMooD produit"></div>
-      <div class="alt-slide"><img src="img/produits/desc2.jpg" alt="WooDMooD produit"></div>
+      <div class="alt-slide"><img src="img/produits/desc2.jpg" alt="WooDMooD produit" style="object-fit: contain; background: #111;"></div>
+      <div class="alt-slide"><img src="img/produits/desc3.jpg" alt="WooDMooD produit" style="object-position: center top;"></div>
     </div>
   </section>
 
@@ -372,118 +455,159 @@
   <section class="alt-section">
     <div class="alt-content">
       <h2 class="prod-section-title">L'Appli</h2>
-      <p class="prod-text">Ouvrir la porte des cassettes · Informer du niveau de remplissage · Visualiser la température de consigne souhaitée · Informer en cas de défaut détecté · Piloter l'appareil à distance en toute simplicité.</p>
+      <p class="prod-text">Vous permet de piloter votre appareil pour · ouvrir les portes des cassettes · informer du niveau de remplissage de celles-ci · visualiser le niveau de température de consigne souhaité · informer en cas de défaut détecté · Vous piloter l'appareil à distance en toute simplicité.</p>
     </div>
     <div class="alt-image" id="slideAppli">
-      <div class="alt-slide active"><img src="https://picsum.photos/seed/app1/1200/800" alt="Application WooDMooD"></div>
-      <div class="alt-slide"><img src="https://picsum.photos/seed/app2/1200/800" alt="Application WooDMooD"></div>
-      <div class="alt-slide"><img src="https://picsum.photos/seed/app3/1200/800" alt="Application WooDMooD"></div>
+      <div class="alt-slide active"><img src="img/produits/appli.jpg" alt="Application WooDMooD" style="object-fit: contain; background: #000;"></div>
     </div>
   </section>
 
   <!-- ══ Nav boxes — row 1 ══ -->
   <div class="nav-boxes">
-    <a href="#installation" class="nav-box nav-box--black">Installation<br>et Encombrement</a>
-    <a href="#modeles"      class="nav-box nav-box--white">Modèles</a>
-    <a href="#materiaux"    class="nav-box nav-box--black">Matériaux</a>
-    <a href="#securite"     class="nav-box nav-box--white">Sécurité</a>
+    <button onclick="togglePanel('panelInstallation')" class="nav-box nav-box--black">Installation<br>et Encombrement</button>
+    <button onclick="togglePanel('panelModeles')" class="nav-box nav-box--white">Modèles</button>
+    <button onclick="togglePanel('panelMateriaux')" class="nav-box nav-box--black">Matériaux</button>
+    <button onclick="togglePanel('panelSecurite')" class="nav-box nav-box--white">Sécurité</button>
   </div>
+
 
   <!-- ══ Nav boxes — row 2 ══ -->
   <div class="nav-boxes">
-    <a href="#logement"   class="nav-box nav-box--white">Pour quelle taille<br>de logement ?</a>
-    <a href="#france"     class="nav-box nav-box--black">Made in France</a>
-    <a href="#certifie"   class="nav-box nav-box--white">Efficacité<br>certifiée</a>
+    <button onclick="togglePanel('panelLogement')" class="nav-box nav-box--white">Pour quelle taille<br>de logement ?</button>
+    <button onclick="togglePanel('panelFrance')" class="nav-box nav-box--black">Made in France</button>
+    <button onclick="togglePanel('panelCertifie')" class="nav-box nav-box--white">Efficacité<br>certifiée</button>
     <a href="#combustion" class="nav-box nav-box--black">Combustion<br>maitrisée</a>
   </div>
 
   <!-- ══ Nav boxes — row 3 ══ -->
-  <div class="nav-boxes">
-    <a href="#prix" class="nav-box nav-box--black">Prix</a>
+  <div class="nav-boxes" style="outline: 1px solid rgba(255,255,255,0.6);">
+    <button onclick="togglePanel('panelPrix')" class="nav-box nav-box--black">Prix</button>
   </div>
 
-  <!-- ══ Legacy content ══ -->
-  <section class="page-content">
-    <div class="page-content-inner">
-
-      <p class="page-intro">
-        WooDMooD a développé le poêle à bûches autonome et connecté, qui rend l'expérience du vrai feu plus facile et permet de vous chauffer à moindre coûts.<br><br>
-        Avec son système automatisé de gestion de l'air et de livraison de bûches de 33 cm stockées dans deux cassettes (contenant au total 12 bûches), l'appareil a une autonomie approximative de 8 heures dans le cas où vous ne réapprovisionnez pas. Vous pilotez votre appareil grâce à une application.
-      </p>
-
-      <div class="products-grid">
-
-        <!-- LEFT: Poêle à Bûches -->
-        <div class="product-col">
-          <h2 class="col-title">Poêle à Bûches</h2>
-          <div class="media-placeholder">Photo produit à venir</div>
-          <div class="media-placeholder">Photo produit à venir</div>
-        </div>
-
-        <!-- RIGHT: Appli -->
-        <div class="product-col">
-          <h2 class="col-title">Appli</h2>
-          <div class="spec-body" style="margin-bottom: 28px; font-style: normal; line-height: 1.85;">
-            L'appli permet de réaliser de multiples taches comme par exemple :<br>
-            Ouvrir la porte des cassettes<br>
-            Informer du niveau de remplissage des cassettes<br>
-            Visualiser la température de consigne que vous souhaitez<br>
-            Informer en cas de défaut détecté
-          </div>
-          <div class="media-placeholder">Capture d'écran à venir</div>
-          <div class="media-placeholder">Capture d'écran à venir</div>
-        </div>
-
+  <!-- ══ Panel: Prix ══ -->
+  <div class="nav-panel" id="panelPrix">
+    <h3 class="nav-panel-title">Prix</h3>
+    <div style="display:flex; align-items:center; gap:32px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:baseline; gap:20px;">
+        <span style="font-family:'Georgia',serif; font-size:clamp(22px,3vw,36px); color:rgba(0,0,0,0.3); text-decoration:line-through;">6 500 €</span>
+        <span style="font-family:'Georgia',serif; font-size:clamp(28px,4vw,48px); font-weight:bold; color:#000;">4 999 €</span>
       </div>
-
-      <!-- Full-width spec sections -->
-      <div class="spec-sections">
-
-        <div class="spec-row">
-          <h3 class="spec-title">Installation et encombrement</h3>
-          <div class="spec-body">
-            <span class="spec-sublabel">L'installation</span><br>
-            &nbsp;&nbsp;* doit être réalisée par un professionnel<br>
-            &nbsp;&nbsp;* accès à un WIFI<br>
-            &nbsp;&nbsp;* une prise de courant à proximité<br>
-            &nbsp;&nbsp;* un conduit de 150mm de diamètre<br>
-            <br>
-            <span class="spec-sublabel">Encombrement</span><br>
-            &nbsp;&nbsp;Schémas à venir
-          </div>
-        </div>
-
-        <div class="spec-row">
-          <h3 class="spec-title">Matériaux</h3>
-          <div class="spec-body">
-            Construction en acier : core du Poêle en acier 6mm<br>
-            Matériaux réfractaires : briques (pour le rayonnement et accumulation de chaleur) et vermiculite<br>
-            Peinture haute température<br>
-            Verre vitrocéramique
-          </div>
-        </div>
-
-        <div class="spec-row">
-          <h3 class="spec-title">Systèmes de sécurité</h3>
-          <div class="spec-body">
-            Système de protection haute température<br>
-            Arrêt de la ventilation et livraison de bois lors de l'ouverture de la porte principale<br>
-            Arrêt de la ventilation lors de l'ouverture de la trappe d'insertion d'une cassette<br>
-            Blocage et déblocage électronique de l'ouverture des portes des cassettes<br>
-            Système de gabaris dans les cassettes pour éviter les blocages de bûches<br>
-            Système de détection de blocage d'une trappe par une bûche
-          </div>
-        </div>
-
-        <div class="spec-row">
-          <h3 class="spec-title">Prix</h3>
-          <p class="spec-body">À venir</p>
-        </div>
-
-      </div>
-
+      <p style="font-family:'Georgia',serif; font-size:clamp(13px,1.15vw,16px); font-style:italic; color:rgba(0,0,0,0.5); margin:0;">prix introductif et pour une durée et un nombre d'appareils limité</p>
     </div>
-  </section>
+  </div>
+
+  <!-- ══ Panel: Modèles ══ -->
+  <div class="nav-panel" id="panelModeles">
+    <h3 class="nav-panel-title">Modèles</h3>
+    <ul class="nav-panel-list">
+      <li>Il existe actuellement deux modèles présentés ci-dessous</li>
+      <li>Deux finitions : "brut de fonderie" (première photo) et noir velouté (deuxième photo)</li>
+    </ul>
+    <div class="nav-panel-images">
+      <div style="display:flex; flex-direction:column; gap:12px; flex:1;">
+        <img src="img/produits/modele1.jpg" alt="Modèle 1" style="width:100%; height:300px; object-fit:contain; background:#f5f5f5;">
+        <img src="img/produits/modele1b.jpg" alt="Modèle 1 détail" style="width:100%; height:280px; object-fit:cover; background:#f5f5f5;">
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px; flex:1;">
+        <img src="img/produits/modele2.jpg" alt="Modèle 2" style="width:100%; height:300px; object-fit:contain; background:#f5f5f5; object-position: center 30%;">
+        <img src="img/produits/modele2b.jpg" alt="Modèle 2 détail" style="width:100%; height:280px; object-fit:cover; background:#f5f5f5;">
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ Panel: Installation et Encombrement ══ -->
+  <div class="nav-panel" id="panelInstallation">
+    <h3 class="nav-panel-title">Installation</h3>
+    <ul class="nav-panel-list">
+      <li>Doit être réalisée par un professionnel</li>
+      <li>Accès à un WiFi</li>
+      <li>Une prise de courant à proximité</li>
+      <li>Un conduit de 150mm de diamètre</li>
+    </ul>
+    <h3 class="nav-panel-title">Encombrement</h3>
+    <p class="nav-panel-intro">À venir</p>
+  </div>
+
+  <!-- ══ Panel: Sécurité ══ -->
+  <div class="nav-panel" id="panelSecurite">
+    <h3 class="nav-panel-title">Sécurité</h3>
+    <p class="nav-panel-intro">Parce que la sécurité est notre top priorité, votre appareil est non seulement certifié CE mais nous allons bien au delà... voici quelques exemples des systèmes de sécurité existants :</p>
+    <ul class="nav-panel-list">
+      <li>Système de protection haute température (votre appareil ne peut pas monter en température au delà d'un niveau défini en usine)</li>
+      <li>Arrêt de la ventilation et livraison de bois lors de l'ouverture de la porte principale (cela limite la baisse de température de votre appareil et la fumée dans votre logement)</li>
+      <li>Arrêt de la ventilation lors de l'ouverture de la trappe d'insertion d'une cassette (cela limite la baisse de température de votre appareil et la fumée dans votre logement)</li>
+      <li>Déverrouillage électronique des portes des cassettes</li>
+      <li>Les cassettes sont équipées de gabarit afin d'éviter les blocages de bûches</li>
+      <li>Système de détection de blocage d'une trappe par une bûche et envoi de notification automatique</li>
+    </ul>
+  </div>
+
+  <!-- ══ Panel: Matériaux ══ -->
+  <div class="nav-panel" id="panelMateriaux">
+    <div style="display:flex; gap:40px; align-items:center;">
+      <div style="flex:1;">
+        <h3 class="nav-panel-title">Matériaux</h3>
+        <p class="nav-panel-intro">La plus grande attention a été apportée à la sélection des matériaux</p>
+        <ul class="nav-panel-list">
+          <li>Construction en acier : corps du Poêle en acier 6mm</li>
+          <li>Matériaux réfractaires : briques (pour le rayonnement et accumulation de chaleur) et vermiculite</li>
+          <li>Peinture haute température</li>
+          <li>Verre vitrocéramique</li>
+        </ul>
+      </div>
+      <div style="flex-shrink:0;">
+        <img src="img/produits/materiaux-poele.jpg" alt="Poêle WooDMooD" style="height:200px; width:auto; object-fit:contain;">
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ Panel: Efficacité certifiée ══ -->
+  <div class="nav-panel" id="panelCertifie">
+    <div style="display:flex; gap:40px; align-items:center;">
+      <div style="flex:1;">
+        <h3 class="nav-panel-title">Efficacité certifiée</h3>
+        <p class="nav-panel-intro">Notre appareil est certifié CE, ce qui veut dire qu'il respecte les dernières Normes Européennes en vigueur pour 4 aspects différents :</p>
+        <ul class="nav-panel-list">
+          <li>Norme de Sécurité et Combustion des poêles à buches</li>
+          <li>Normes ELV (courant basse tension)</li>
+          <li>Norme Electromagnétisme</li>
+          <li>Norme Machine (sécurité machine afin d'éliminer les risques de blessures)</li>
+        </ul>
+      </div>
+      <div style="flex-shrink:0;">
+        <img src="img/produits/ce-quality-certificate.jpg" alt="Certification CE" style="height:180px; width:auto; object-fit:contain;">
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ Panel: Made in France ══ -->
+  <div class="nav-panel" id="panelFrance">
+    <div style="display:flex; gap:40px; align-items:center;">
+      <div style="flex:1;">
+        <h3 class="nav-panel-title">Made in France</h3>
+        <p class="nav-panel-intro">WooDMooD est une entreprise basée à Angers dans le Maine-et-Loire</p>
+        <ul class="nav-panel-list">
+          <li>Le développement R&amp;D a été réalisé à Orléans et à Angers</li>
+          <li>La majorité de nos fournisseurs se situent à une distance maxi de 100km autour de notre atelier</li>
+          <li>Notre atelier d'assemblage se situe à Angers</li>
+        </ul>
+      </div>
+      <div style="flex-shrink:0;">
+        <img src="img/produits/made-in-france.jpg" alt="Made in France" style="height:180px; width:auto; object-fit:contain;">
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ Panel: Pour quelle taille de logement ══ -->
+  <div class="nav-panel" id="panelLogement">
+    <h3 class="nav-panel-title">Pour quelle taille de logement ?</h3>
+    <ul class="nav-panel-list">
+      <li>Du fait de son fonctionnement particulier par rapport aux poêles à buches du marché, vous pouvez sélectionner le niveau de température désiré sur votre appli de T1 à T6.</li>
+      <li>Vous pouvez donc chauffer un logement de 100m² à 200m².</li>
+      <li>En mode éco, votre appareil présente une puissance de 12KW.</li>
+    </ul>
+  </div>
+
 
   <script>
     function fitBrandName() {
@@ -517,6 +641,20 @@
     initSlideshow('slideDesc');
     initSlideshow('slidePole');
     initSlideshow('slideAppli');
+
+    function togglePanel(id) {
+      const panel = document.getElementById(id);
+      const isOpen = panel.classList.contains('active');
+      document.querySelectorAll('.nav-panel').forEach(p => p.classList.remove('active'));
+      if (!isOpen) {
+        panel.classList.add('active');
+        setTimeout(() => {
+          const rect = panel.getBoundingClientRect();
+          const headerH = window.innerHeight * 0.15;
+          window.scrollBy({ top: rect.top - headerH, behavior: 'smooth' });
+        }, 380);
+      }
+    }
 
     /* ── Top slideshow ── */
     (function() {
