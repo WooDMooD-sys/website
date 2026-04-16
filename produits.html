@@ -566,7 +566,7 @@
     <button onclick="togglePanel('panelLogement')" class="nav-box nav-box--white">Pour quelle taille<br>de logement ?</button>
     <button onclick="togglePanel('panelFrance')" class="nav-box nav-box--black">Made in France</button>
     <button onclick="togglePanel('panelCertifie')" class="nav-box nav-box--white">Efficacité<br>certifiée</button>
-    <a href="#combustion" class="nav-box nav-box--black">Combustion<br>maitrisée</a>
+    <button onclick="togglePanel('panelCombustion')" class="nav-box nav-box--black">Caractéristiques<br>techniques</button>
   </div>
 
   <!-- ══ Nav boxes — row 3 ══ -->
@@ -685,6 +685,95 @@
       <div style="flex-shrink:0;">
         <img src="img/produits/made-in-france.jpg" alt="Made in France" style="height:180px; width:auto; object-fit:contain;">
       </div>
+    </div>
+  </div>
+
+  <!-- ══ Panel: Combustion maitrisée ══ -->
+  <div class="nav-panel" id="panelCombustion">
+    <h3 class="nav-panel-title">Quelques caractéristiques techniques</h3>
+    <div style="overflow-x:auto; margin-top:8px;">
+      <table style="width:100%; border-collapse:collapse; font-family:'Georgia',serif; font-size:clamp(12px,1.1vw,15px);">
+        <thead>
+          <tr>
+            <th style="background:#000; color:#fff; padding:12px 16px; text-align:left; letter-spacing:0.12em; text-transform:uppercase; font-size:clamp(11px,1vw,13px); width:50%;">Caractéristique</th>
+            <th style="background:#000; color:#fff; padding:12px 16px; text-align:left; letter-spacing:0.12em; text-transform:uppercase; font-size:clamp(11px,1vw,13px); width:50%;">Mesure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#f9f9f9;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Puissance nominale</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">12 kW</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Rendement</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">76 %</td>
+          </tr>
+          <tr style="background:#f9f9f9;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Émission CO</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">0,099 %</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Tirage minimum (puissance nominale)</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">12 Pa</td>
+          </tr>
+          <tr style="background:#f9f9f9;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Débit massique des produits de combustion secs</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">14,6 g/s</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Température des fumées</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">312 °C</td>
+          </tr>
+          <tr style="background:#f9f9f9;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Dimensions des bûches</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">33 cm</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Diamètre du conduit de fumée</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">150–153 mm</td>
+          </tr>
+          <tr style="background:#f9f9f9;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Poids (tout compris)</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">430 kg</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Corps</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">Acier 6 mm</td>
+          </tr>
+          <tr style="background:#f9f9f9;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Résistance peinture</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">300 °C</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Verre vitrocéramique</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">750 °C</td>
+          </tr>
+          <tr style="background:#f9f9f9;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Distance matériaux combustibles — côtés</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">30 cm</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Distance matériaux combustibles — arrière</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">15 cm</td>
+          </tr>
+          <tr style="background:#f9f9f9;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Distance matériaux combustibles — avant</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">100 cm</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Alimentation électrique</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">220–240V / 50Hz</td>
+          </tr>
+          <tr style="background:#f9f9f9;">
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.72);">Indice de protection (IP)</td>
+            <td style="padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.08); color:rgba(0,0,0,0.55);">IP 21</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:10px 16px; color:rgba(0,0,0,0.72);">Consommation électrique</td>
+            <td style="padding:10px 16px; color:rgba(0,0,0,0.55);">Max 48W / Régime permanent 10W</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
