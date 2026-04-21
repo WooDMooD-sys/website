@@ -57,11 +57,22 @@
       gap: clamp(22px, 3.8vw, 60px);
     }
 
-    .wm-macaron {
-      height: clamp(50px, 11vh, 110px);
-      width: auto;
-      display: block;
+    .wm-macaron-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
       margin-right: -2vw;
+    }
+
+    .wm-macaron-text span {
+      font-family: 'Times New Roman', serif;
+      font-weight: bold;
+      color: rgba(255, 160, 50, 0.88);
+      letter-spacing: 0.06em;
+      font-size: clamp(10px, 1.1vw, 15px);
+      white-space: nowrap;
+      text-align: right;
     }
 
     .header-nav a {
@@ -172,7 +183,7 @@
       .site-header { height: 60px; padding: 0 4vw; }
       .brand-logo { height: 28px; }
       .brand-name { font-size: 13px !important; }
-      .wm-macaron { display: none; }
+      .wm-macaron-text { display: none; }
       .nav-toggle { display: flex; }
       .header-nav {
         display: none;
@@ -212,7 +223,7 @@
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-    <img src="Gemini_Generated_Image_9tt4nn9tt4nn9tt4__2_-removebg-preview.png" class="wm-macaron" alt="WooDMooD">
+    <div class="wm-macaron-text"><span>Poêles à Bûches</span><span>Autonomes et Connectés</span></div>
   </header>
 
   <!-- Contact content -->
