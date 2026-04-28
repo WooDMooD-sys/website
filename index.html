@@ -295,31 +295,33 @@
 
       /* Slideshow */
       .slideshow {
-        height: calc(100vh - 60px);
+        height: 56vw;          /* keeps landscape ratio visible */
+        min-height: 220px;
         margin-top: 60px;
       }
 
-      /* Feature bar: 2×2 grid */
+      /* Show stove centred in portrait crop */
+      .slide {
+        background-position: center 35%;
+      }
+
+      /* Feature bar: single compact row */
       .feature-bar {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 3px 2vw;
       }
 
       .feat-item {
-        padding: 8px 4px;
-        border-right: 1px solid rgba(255,160,50,0.12);
-        border-top: 1px solid rgba(255,160,50,0.12);
+        padding: 4px 2px;
+        border-right: none;
+        border-top: none;
       }
 
-      .feat-item:nth-child(2n) { border-right: none; }
-      .feat-item:nth-child(1),
-      .feat-item:nth-child(2) { border-top: none; }
+      .feat-icon { width: 14px; height: 14px; }
 
-      .feat-icon { width: 22px; height: 22px; }
-
-      .feat-label { font-size: 9px; letter-spacing: 0.1em; }
+      .feat-label { font-size: 7px; letter-spacing: 0.08em; }
 
       /* Alternating sections: stack vertically */
       .alt-section {
