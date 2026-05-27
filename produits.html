@@ -599,7 +599,7 @@
       <div class="video-portrait-wrap">
         <iframe
           id="yt-video-frame"
-          src="https://www.youtube.com/embed/rbdia_KfRzE?autoplay=1&mute=1&loop=1&playlist=rbdia_KfRzE&controls=0&rel=0&disablekb=1&modestbranding=1&playsinline=1&enablejsapi=1"
+          src="https://www.youtube.com/embed/rbdia_KfRzE?autoplay=1&mute=1&controls=0&rel=0&disablekb=1&modestbranding=1&playsinline=1&enablejsapi=1"
           frameborder="0"
           allow="autoplay; encrypted-media"
           allowfullscreen
@@ -916,15 +916,17 @@
     document.head.appendChild(ytApiScript);
 
     function onYouTubeIframeAPIReady() {
-      new YT.Player('yt-video-frame', {
+      var player = new YT.Player('yt-video-frame', {
         events: {
           onStateChange: function(event) {
             var cover = document.getElementById('videoCover');
             if (!cover) return;
             if (event.data === YT.PlayerState.ENDED) {
-              // Video looped — instantly show the cover
+              // Instantly cover the end screen, then restart manually
               cover.style.transition = 'none';
               cover.style.opacity = '1';
+              player.seekTo(0);
+              player.playVideo();
             } else if (event.data === YT.PlayerState.PLAYING) {
               // Video playing — fade cover out after a short delay
               setTimeout(function() {
