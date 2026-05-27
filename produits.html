@@ -501,14 +501,16 @@
     /* ── Portrait video section ── */
     .alt-section.video-section .alt-image {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 24px;
+      overflow: visible;
     }
 
     .video-portrait-wrap {
       position: relative;
-      height: 58vh;
+      height: 50vh;
       aspect-ratio: 9 / 16;
       flex-shrink: 0;
       overflow: hidden;
