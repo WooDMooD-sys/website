@@ -528,6 +528,20 @@
       z-index: 2;
     }
 
+    .video-cover {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      background: #111;
+      border-radius: 8px;
+      transition: opacity 0.8s ease;
+    }
+
+    .video-cover.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
     @media (max-width: 768px) {
       .alt-section.video-section .alt-image {
         height: auto !important;
@@ -590,6 +604,7 @@
           allowfullscreen
         ></iframe>
         <div class="video-overlay"></div>
+        <div class="video-cover" id="videoCover"></div>
       </div>
     </div>
     <div class="alt-content" style="flex: 0 0 55%;">
@@ -894,6 +909,14 @@
     window.addEventListener('resize', fitBrandName);
   </script>
   <script>
+    /* ── Hide video startup overlay ── */
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var cover = document.getElementById('videoCover');
+        if (cover) cover.classList.add('fade-out');
+      }, 1400);
+    });
+
     function initSlideshow(id) {
       const slides = document.querySelectorAll('#' + id + ' .alt-slide');
       if (!slides.length) return;
