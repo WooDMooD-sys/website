@@ -109,6 +109,30 @@
 
     .slide.active { opacity: 1; }
 
+    /* ── Certification badges, left edge of the slideshow ── */
+    .slide-badges {
+      position: absolute;
+      top: 0;
+      bottom: 90px;
+      left: 2vw;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      gap: 16px;
+    }
+
+    .slide-badge {
+      height: clamp(48px, 6vw, 84px);
+      width: auto;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 8px;
+      padding: 6px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+
     /* ── Feature bar — always visible at bottom of slideshow ── */
     .feature-bar {
       position: absolute;
@@ -323,6 +347,19 @@
 
       .feat-label { font-size: 7px; letter-spacing: 0.08em; }
 
+      /* Certification badges: smaller, leave room for feature bar */
+      .slide-badges {
+        bottom: 50px;
+        left: 2vw;
+        gap: 6px;
+      }
+
+      .slide-badge {
+        height: clamp(28px, 9vw, 44px);
+        padding: 3px;
+        border-radius: 5px;
+      }
+
       /* Alternating sections: stack vertically */
       .alt-section {
         flex-direction: column;
@@ -374,6 +411,13 @@
     <div class="slide"       style="background-image: url('img/slides/slide2.jpeg')"></div>
     <div class="slide"       style="background-image: url('img/slides/slide3.jpeg')"></div>
     <div class="slide"       style="background-image: url('img/slides/slide4.jpeg')"></div>
+
+    <!-- ── Certification badges ── -->
+    <div class="slide-badges">
+      <img src="img/produits/ce-quality-certificate.jpg" class="slide-badge" alt="Certifié CE">
+      <img src="brevet.png" class="slide-badge" alt="Breveté">
+      <img src="img/produits/made-in-france.jpg" class="slide-badge" alt="Made in France">
+    </div>
 
     <!-- ── Feature bar always pinned at bottom ── -->
     <div class="feature-bar">
