@@ -125,8 +125,12 @@
 
     .slide-badge {
       height: clamp(48px, 6vw, 84px);
-      width: clamp(48px, 6vw, 84px);
+      width: auto;
       object-fit: contain;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 8px;
+      padding: 6px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
     }
 
     /* ── Feature bar — always visible at bottom of slideshow ── */
@@ -352,7 +356,8 @@
 
       .slide-badge {
         height: clamp(28px, 9vw, 44px);
-        width: clamp(28px, 9vw, 44px);
+        padding: 3px;
+        border-radius: 5px;
       }
 
       /* Alternating sections: stack vertically */
