@@ -204,14 +204,21 @@
     }
 
     @media (max-width: 620px) {
-      .story-stage { min-height: 660px !important; }
-      .story-mosaic { top: 0; }
+      .story-stage { min-height: 700px !important; }
       .story-photo {
-        left: 8vw;
-        top: 300px;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
         height: 320px;
         width: auto;
-        max-width: 60vw;
+        max-width: 70vw;
+      }
+      .story-mosaic {
+        left: 50%;
+        top: 340px;
+      }
+      .story-finale {
+        top: 588px !important;
       }
     }
 
@@ -272,6 +279,7 @@
 
     @media (max-width: 620px) {
       .story-mosaic { width: 92vw; transform: translateX(-50%) scale(0.72); transform-origin: top center; }
+      .story-finale { transform: translateX(-50%) scale(0.72); transform-origin: top center; }
     }
 
     /* ── Partenaires section ── */
