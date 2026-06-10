@@ -190,12 +190,11 @@
       margin-left: -8vw;
     }
 
-    /* photo to the left of the word mosaic */
+    /* photo to the left of the word mosaic, aligned under the page title */
     .story-photo {
       position: absolute;
-      left: 4vw;
-      top: 50%;
-      transform: translateY(-50%);
+      left: 8vw;
+      top: 0;
       height: 320px;
       width: auto;
       max-width: 38vw;
@@ -207,13 +206,11 @@
     @media (max-width: 620px) {
       .story-stage { min-height: 580px; }
       .story-photo {
-        left: 50%;
+        left: 8vw;
         top: 0;
-        transform: translateX(-50%);
-        height: auto;
-        width: 50vw;
-        max-width: 220px;
-        max-height: none;
+        height: 320px;
+        width: auto;
+        max-width: 60vw;
       }
       .story-mosaic { top: 320px; }
     }
