@@ -190,6 +190,24 @@
       margin-left: -8vw;
     }
 
+    /* photo to the left of the word mosaic */
+    .story-photo {
+      position: absolute;
+      left: 4vw;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 320px;
+      width: auto;
+      max-width: 38vw;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    @media (max-width: 768px) {
+      .story-photo { display: none; }
+    }
+
     /* mosaic container */
     .story-mosaic {
       position: absolute;
@@ -339,7 +357,9 @@
       <h1 class="page-title">Histoire</h1>
     </div>
     <p class="story-intro">L'aventure a commencé début 2024</p>
-    <div id="storyStage" class="story-stage"></div>
+    <div id="storyStage" class="story-stage">
+      <img src="img/histoire/equipe-poele.jpg" alt="L'équipe WooDMooD avec le poêle à bûches" class="story-photo">
+    </div>
   </section>
 
   <!-- Partenaires -->
